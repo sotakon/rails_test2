@@ -13,7 +13,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    @blog = Blog.all
     @user = User.find(params[:id])
+    @favorite = current_user.favorites.find_by(blog_id: @blog.ids)
   end
 
   private
